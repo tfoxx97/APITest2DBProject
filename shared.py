@@ -1,3 +1,6 @@
+'''This file represents everything the test project will share with the client 
+(i.e commands to run for each scenario in the CLI, firmware version, release name, component, and feature)'''
+
 ECIE_commands = [
     b"Get info\r\n" # use this command to get need info to write to db (fw version, extronlib component, feature)
     b"scenario ECIE_Instantiation 0\r\n",
@@ -29,3 +32,10 @@ ECIE_commands = [
     b"scenario StopKeepAlive 0\r\n",
     b"The end\r\n"
 ]
+
+# Server replies with firmware/component/feature
+# hard coded data that will be provided in the test suite
+RELEASE = "Top Gear"
+firmware_str = "1.00.0000-b000"   # hard‑coded in the demo
+component = "extronlib.interface"
+feature = "EthernetClientInterface"
