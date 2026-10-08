@@ -27,6 +27,14 @@ def get_or_create_firmware(session, firmware_str: str, release_name: str = "defa
     """
     Return a Firmware record – create it if it does not exist.
     The firmware is stored with a reference to a Release.
+
+    Parameters:
+    --------------------------
+    session: object used to manage database connection
+
+    firmware_str: string returned by the control processor. Should be provided in test suite
+
+    release_name: code name of release. Should be provided in test suite
     """
     release = get_or_create_release(session, RELEASE)
     firmware = (
@@ -38,6 +46,7 @@ def get_or_create_firmware(session, firmware_str: str, release_name: str = "defa
         firmware = Firmware(firmware=firmware_str, release_id=release.id)
         session.add(firmware)
         session.flush()
+
     return firmware
 
 def write_test_result(
@@ -63,6 +72,6 @@ def write_test_result(
         result=result,
         debug=debug,
     )
-    # the database is being locked due to multi-threading situations where a 
+
     session.add(result_record)
     session.commit()
