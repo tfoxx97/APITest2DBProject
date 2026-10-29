@@ -26,6 +26,7 @@ class Results(Base):
     id = Column(Integer, primary_key=True)
     firmware_id = Column(Integer, ForeignKey('Firmware.id'))
     date_tested = Column(DateTime)
+    device = Column(String(10))
     component = Column(String(50))
     feature = Column(String(50))
     scenarioID = Column(Integer)

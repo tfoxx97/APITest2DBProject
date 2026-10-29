@@ -1,5 +1,6 @@
 import socket
 from shared import ECIE_commands
+from databaseAPI import SessionLocal, write_test_result
 
 processor = '127.0.0.1'
 
@@ -21,6 +22,12 @@ def connectToController():
                         break
     except Exception as e:
         print(f"Socket error: {type(e)}, {e}")
+
+def handle_incoming_data(data):
+    '''Use this to handle data received from controller to send to database.
+    It will handle test info (firmware, release name, extronlib component and feature), as well as 
+    each scenario. Look for emojis at end of each test step ✅, ❌, or ⌛ to determine if a full scenario passes or fails.'''
+    pass
 
 is_csdu_deployed = input("Is CSDU project deployed? (Y/n)").lower()
 is_test_service_repo_running = input("Is the test services repo running? (Y/n)").lower()

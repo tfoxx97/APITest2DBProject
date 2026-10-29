@@ -53,6 +53,7 @@ def write_test_result(
     session,
     firmware_str: str,
     date_tested: datetime,
+    device: str,
     component: str,
     feature: str,
     scenario_id: int,
@@ -66,6 +67,7 @@ def write_test_result(
     result_record = Results(
         firmware_id=firmware.id,
         date_tested=date_tested,
+        device=device,
         component=component,
         feature=feature,
         scenarioID=scenario_id,

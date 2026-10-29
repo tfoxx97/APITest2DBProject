@@ -13,7 +13,7 @@ import socket
 import uuid
 import random
 from datetime import datetime
-from databaseAPI import SessionLocal, get_or_create_firmware, write_test_result
+from databaseAPI import SessionLocal, write_test_result
 from shared import ECIE_commands, firmware_str, component, feature
 
 # --------------------------------------------------------------------------- #

@@ -35,7 +35,35 @@ ECIE_commands = [
 
 # Server replies with firmware/component/feature
 # hard coded data that will be provided in the test suite
-RELEASE = "Top Gear"
+RELEASE = "Release_name"
 firmware_str = "1.00.0000-b000"   # hard‑coded in the demo
 component = "extronlib.interface"
 feature = "EthernetClientInterface"
+IP_ADDRESS = '192.168.254.250'
+device = None
+if IP_ADDRESS == '192.168.254.250':
+    device = 'Xi'
+elif IP_ADDRESS == '192.168.254.254':
+    device = 'QXi'
+
+ECIE_Init_0 = [
+    'Given: extronlib.interface is available in the current firmware ✅'
+    'And host is a valid IP Address ✅'
+    'And port is set to a valid str ✅'
+    'When the constructor is called ✅'
+    'Then an instance of EthernetClientInterface is successfully created ✅'
+]
+
+ECIE_Init_1 = [
+    'Given: extronlib.interface is available in the current firmware ✅'
+    'And host is a valid IP Address ✅'
+    'And port is not set to a valid str ✅'
+    'When the constructor is called ✅'
+    'Then a ValueError is raised ❌'
+    'Unexpected error: Expected a ValueError, got AssertionError'
+]
+
+run_through_scenarios = {
+    b"scenario ECIE_Instantiation 0\r\n": ECIE_Init_0,
+    b"scenario ECIE_Instantiation 1\r\n": ECIE_Init_1,
+}
